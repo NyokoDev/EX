@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using UltimateEyecandy.GUI;
+using EyeCandyX.GUI;
 
 using ColossalFramework.Plugins;
 using ColossalFramework.UI;
 using ICities;
 using UnityEngine;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
-    public class UltimateEyecandyTool : MonoBehaviour
+    public class EyeCandyXTool : MonoBehaviour
     {
-        public static UltimateEyecandyTool instance;
+        public static EyeCandyXTool instance;
         private static UIMainButton m_mainbutton;
         private static UIMainPanel m_mainpanel;
 
@@ -28,8 +28,8 @@ namespace UltimateEyecandy
         //public static float TABS_HEIGHT = 28;
 
         public static string FileName;
-        private const string FileNameOnline = "CSL_UltimateEyecandy.xml";
-        private const string FileNameLocal = "CSL_UltimateEyecandy_local.xml";
+        private const string FileNameOnline = "CSL_EyeCandyX.xml";
+        private const string FileNameLocal = "CSL_EyeCandyX_local.xml";
 
         public static Configuration config;
         //  In-Memory Preset for storing initial settings:
@@ -51,7 +51,7 @@ namespace UltimateEyecandy
                 UIMainPanel.instance.isVisible = false;
             }
 
-            var go = FindObjectOfType<UltimateEyecandyTool>();
+            var go = FindObjectOfType<EyeCandyXTool>();
             if (go != null)
             {
                 Destroy(go);
@@ -70,13 +70,13 @@ namespace UltimateEyecandy
 
         public static void Initialize(LoadMode mode)
         {
-            var go = new GameObject("UltimateEyecandyTool");
+            var go = new GameObject("EyeCandyXTool");
             try
             {
                 FileName = (PluginManager.noWorkshop) ? FileNameLocal : FileNameOnline;
                 DebugUtils.Log($"Currently used config File: {FileName}.");
                 //  
-                go.AddComponent<UltimateEyecandyTool>();
+                go.AddComponent<EyeCandyXTool>();
                 //  
                 isEditor = (mode == LoadMode.LoadAsset || mode == LoadMode.NewAsset) ? true : false;
                 isGameLoaded = true;

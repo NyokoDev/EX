@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
 
     public class UIMainPanel : UIPanel
@@ -31,7 +31,7 @@ namespace UltimateEyecandy.GUI
             base.Start();
             instance = this;
             //  
-            backgroundSprite = (UltimateEyecandyTool.isEditor) ? "MenuPanel2" : "LevelBarBackground";
+            backgroundSprite = (EyeCandyXTool.isEditor) ? "MenuPanel2" : "LevelBarBackground";
             isVisible = false;
             canFocus = true;
             isInteractive = true;
@@ -48,7 +48,7 @@ namespace UltimateEyecandy.GUI
         {
             //  Title Bar:
             m_title = AddUIComponent<UIMainTitleBar>();
-            m_title.title = "Ultimate Eyecandy " + Mod.version;
+            m_title.title = "Eyecandy X " + Mod.version;
             //  Tabs:
             panelTabs = AddUIComponent<UITabstrip>();
             panelTabs.size = new Vector2(UIUtils.c_modPanelInnerWidth, UIUtils.c_tabButtonHeight);
@@ -132,7 +132,7 @@ namespace UltimateEyecandy.GUI
 
         private void TabClicked(UIComponent trigger, UIMouseEventParameter e)
         {
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"MainPanel: Tab '{trigger.name}' clicked");
             }
@@ -154,7 +154,7 @@ namespace UltimateEyecandy.GUI
             {
                 colorManagementPanel.isVisible = true;
                 colorManagementPanel.lutFastlist.selectedIndex = ColorCorrectionManager.instance.lastSelection;
-                var isActive = (colorManagementPanel._selectedLut.internal_name == UltimateEyecandyTool.currentSettings.color_selectedlut);
+                var isActive = (colorManagementPanel._selectedLut.internal_name == EyeCandyXTool.currentSettings.color_selectedlut);
                 colorManagementPanel.loadLutButton.isEnabled = (isActive) ? false : true;
                 colorManagementPanel.loadLutButton.opacity = (isActive) ? 0.5f : 1.0f;
                 colorManagementPanel.loadLutButton.tooltip = (isActive) ? "LUT selected in list is already active." : "Load LUT selected in list.";

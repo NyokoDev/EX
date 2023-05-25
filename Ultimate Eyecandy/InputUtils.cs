@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     class InputUtils
     {
@@ -8,17 +8,17 @@ namespace UltimateEyecandy
         {
             bool validInput = false;
             //  Preferred hotkey: [Shift] + [U]:
-            if (((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && Input.GetKeyUp(KeyCode.U)) && UltimateEyecandyTool.config.keyboardShortcut == 0)
+            if (((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && Input.GetKeyUp(KeyCode.U)) && EyeCandyXTool.config.keyboardShortcut == 0)
             {
                 validInput = true;
             }
             //  Preferred hotkey: [Ctrl] + [U]:
-            if (((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyUp(KeyCode.U)) && UltimateEyecandyTool.config.keyboardShortcut == 1)
+            if (((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyUp(KeyCode.U)) && EyeCandyXTool.config.keyboardShortcut == 1)
             {
                 validInput = true;
             }
             //  Preferred hotkey: [Alt] + [U]:
-            if (((Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) && Input.GetKeyUp(KeyCode.U)) && UltimateEyecandyTool.config.keyboardShortcut == 2)
+            if (((Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) && Input.GetKeyUp(KeyCode.U)) && EyeCandyXTool.config.keyboardShortcut == 2)
             {
                 validInput = true;
             }

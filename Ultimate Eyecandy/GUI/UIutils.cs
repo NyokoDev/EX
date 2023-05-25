@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class UIUtils
     {
@@ -258,7 +258,7 @@ namespace UltimateEyecandy.GUI
         {
             UIDropDown dropDown = parent.AddUIComponent<UIDropDown>();
             dropDown.size = new Vector2(90f, 30f);
-            dropDown.listBackground = "GenericPanelLight";
+            dropDown.listBackground = "PanelTitleBar";
             dropDown.itemHeight = 30;
             dropDown.itemHover = "ListItemHover";
             dropDown.itemHighlight = "ListItemHighlight";
@@ -392,7 +392,7 @@ namespace UltimateEyecandy.GUI
             panel.height = 50;
             panel.width = parent.width;
             panel.padding = new RectOffset(5, 5, 0, 15);
-            //panel.padding = new RectOffset((int)UltimateEyecandyTool.SPACING, (int)UltimateEyecandyTool.SPACING, 0, 15);
+            //panel.padding = new RectOffset((int)EyeCandyXTool.SPACING, (int)EyeCandyXTool.SPACING, 0, 15);
             panel.autoLayout = true;
             panel.autoLayoutDirection = LayoutDirection.Vertical;
 
@@ -400,7 +400,7 @@ namespace UltimateEyecandy.GUI
             {
                 panel.height = 65;
                 panel.padding = new RectOffset(5, 5, 20, 15);
-                //panel.padding = new RectOffset((int)UltimateEyecandyTool.SPACING, (int)UltimateEyecandyTool.SPACING, 20, 15);
+                //panel.padding = new RectOffset((int)EyeCandyXTool.SPACING, (int)EyeCandyXTool.SPACING, 20, 15);
                 panel.AlignTo(parent, UIAlignAnchor.TopLeft);
                 panel.relativePosition = new Vector3(0, 10);
             }
@@ -413,7 +413,7 @@ namespace UltimateEyecandy.GUI
             else
             {
                 panel.padding = new RectOffset(5, 5, 0, 0);
-                //panel.padding = new RectOffset((int)UltimateEyecandyTool.SPACING, (int)UltimateEyecandyTool.SPACING, 0, 0);
+                //panel.padding = new RectOffset((int)EyeCandyXTool.SPACING, (int)EyeCandyXTool.SPACING, 0, 0);
             }
 
             return panel;

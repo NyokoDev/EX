@@ -2,8 +2,9 @@
 using UnityEngine;
 
 using System;
+using CityColors;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public interface IUIFastListRow
     {
@@ -78,7 +79,7 @@ namespace UltimateEyecandy.GUI
 
         private Type m_rowType;
         private string m_backgroundSprite;
-        private Color32 m_color = new Color32(255, 255, 255, 255);
+        private Color32 m_color = ColorData.UIColor;
         private float m_rowHeight = -1;
         private float m_pos = -1;
         private float m_stepSize = 0;

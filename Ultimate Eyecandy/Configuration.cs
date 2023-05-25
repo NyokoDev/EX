@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using UltimateEyecandy.GUI;
+using EyeCandyX.GUI;
 using UnityEngine;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     public class Configuration
     {
@@ -15,6 +15,7 @@ namespace UltimateEyecandy
         public Vector3 buttonPos = new Vector3(-9999, -9999, -9999);
 
         public bool loadLastPresetOnStart;
+        
         public bool enableSimulationControl = true;
         public bool outputDebug;
         public string lastPreset;
@@ -131,8 +132,8 @@ namespace UltimateEyecandy
 
         public static void Save(Configuration config, bool reloadUI)
         {
-            string fileNameOnline = "CSL_UltimateEyecandy.xml";
-            string fileNameLocal = "CSL_UltimateEyecandy_local.xml";
+            string fileNameOnline = "CSL_EyeCandyX.xml";
+            string fileNameLocal = "CSL_EyeCandyX_local.xml";
 
             var fileName = (PluginManager.noWorkshop) ? fileNameLocal : fileNameOnline;
             try
@@ -140,18 +141,18 @@ namespace UltimateEyecandy
                 var xmlSerializer = new XmlSerializer(typeof(Configuration));
                 using (var streamWriter = new StreamWriter(fileName))
                 {
-                    UltimateEyecandyTool.config.version = Mod.version;
+                    EyeCandyXTool.config.version = Mod.version;
 
                     var configCopy = new Configuration();
-                    configCopy.version = UltimateEyecandyTool.config.version;
-                    configCopy.keyboardShortcut = UltimateEyecandyTool.config.keyboardShortcut;
-                    configCopy.buttonPos = UltimateEyecandyTool.config.buttonPos;
-                    configCopy.outputDebug = UltimateEyecandyTool.config.outputDebug;
-                    configCopy.enableSimulationControl = UltimateEyecandyTool.config.enableSimulationControl;
-                    configCopy.loadLastPresetOnStart = UltimateEyecandyTool.config.loadLastPresetOnStart;
-                    configCopy.lastPreset = UltimateEyecandyTool.config.lastPreset;
+                    configCopy.version = EyeCandyXTool.config.version;
+                    configCopy.keyboardShortcut = EyeCandyXTool.config.keyboardShortcut;
+                    configCopy.buttonPos = EyeCandyXTool.config.buttonPos;
+                    configCopy.outputDebug = EyeCandyXTool.config.outputDebug;
+                    configCopy.enableSimulationControl = EyeCandyXTool.config.enableSimulationControl;
+                    configCopy.loadLastPresetOnStart = EyeCandyXTool.config.loadLastPresetOnStart;
+                    configCopy.lastPreset = EyeCandyXTool.config.lastPreset;
 
-                    foreach (var preset in UltimateEyecandyTool.config.presets)
+                    foreach (var preset in EyeCandyXTool.config.presets)
                     {
                         //  Skip Temporary Preset:
                         if (preset.name == string.Empty)
@@ -178,7 +179,7 @@ namespace UltimateEyecandy
                         configCopy.presets.Add(newPreset);
                     }
                     xmlSerializer.Serialize(streamWriter, configCopy);
-                    UltimateEyecandyTool.config = configCopy;
+                    EyeCandyXTool.config = configCopy;
                     if (reloadUI)
                     {
                         PresetsPanel.instance.PopulatePresetsFastList();

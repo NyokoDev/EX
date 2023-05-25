@@ -1,7 +1,7 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class UIModalTitleBar : UIPanel
     {

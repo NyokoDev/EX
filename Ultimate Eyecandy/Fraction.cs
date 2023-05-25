@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     [Serializable]
     public struct Fraction

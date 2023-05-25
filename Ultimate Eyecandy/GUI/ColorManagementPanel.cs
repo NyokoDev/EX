@@ -5,7 +5,7 @@ using ColossalFramework.UI;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class ColorManagementPanel : UIPanel
     {
@@ -107,18 +107,18 @@ namespace UltimateEyecandy.GUI
                 try
                 {
                     DebugUtils.Log($"ColorManagementPanel: 'Load lut' clicked: {_selectedLut.name} ({_selectedLut.internal_name} / {_selectedLut.index}).");
-                    UltimateEyecandyTool.currentSettings.color_selectedlut = _selectedLut.internal_name;
+                    EyeCandyXTool.currentSettings.color_selectedlut = _selectedLut.internal_name;
                     ColorCorrectionManager.instance.currentSelection = _selectedLut.index;
                 }
                 catch (Exception ex)
                 {
-                    if (UltimateEyecandyTool.config.outputDebug)
+                    if (EyeCandyXTool.config.outputDebug)
                     {
                         DebugUtils.Log($"ColorManagementPanel: 'Load lut' clicked: lut {_selectedLut.name} not found, applying default Lut for current biome ({LoadingManager.instance.m_loadedEnvironment}).");
                     }
                     DebugUtils.LogException(ex);
                     _lutFastlist.DisplayAt(0);
-                    UltimateEyecandyTool.currentSettings.color_selectedlut = LutList.GetLutNameByIndex(ColorCorrectionManager.instance.lastSelection); // "None";
+                    EyeCandyXTool.currentSettings.color_selectedlut = LutList.GetLutNameByIndex(ColorCorrectionManager.instance.lastSelection); // "None";
                     ColorCorrectionManager.instance.currentSelection = 0;
                 }
             };
@@ -175,14 +175,14 @@ namespace UltimateEyecandy.GUI
             _resetColorManagementButton.tooltip = "Reset all values set in this panel to default values.";
             _resetColorManagementButton.eventClicked += (c, e) =>
             {
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"ColorPanel: 'Reset' clicked.");
                 }
                 //  
                 _lutFastlist.DisplayAt(0);
                 _lutFastlist.selectedIndex = 0;
-                UltimateEyecandyTool.currentSettings.color_selectedlut = LutList.GetLutNameByIndex(ColorCorrectionManager.instance.lastSelection);
+                EyeCandyXTool.currentSettings.color_selectedlut = LutList.GetLutNameByIndex(ColorCorrectionManager.instance.lastSelection);
                 ColorCorrectionManager.instance.currentSelection = 0;
                 _enableLutCheckbox.isChecked = true;
                 _enableTonemappingCheckbox.isChecked = true;
@@ -212,12 +212,12 @@ namespace UltimateEyecandy.GUI
         {
             _selectedLut = _lutFastlist.rowsData[i] as LutList.Lut;
             //  
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"ColorManagementPanel: LutFastList SelectedItemChanged: {_selectedLut.name} selected.");
             }
             //  Button appearance:
-            var isActive = (_selectedLut.internal_name == UltimateEyecandyTool.currentSettings.color_selectedlut);
+            var isActive = (_selectedLut.internal_name == EyeCandyXTool.currentSettings.color_selectedlut);
             _loadLutButton.isEnabled = (isActive) ? false : true;
             _loadLutButton.opacity = (isActive) ? 0.5f : 1.0f;
             _loadLutButton.tooltip = (isActive) ? "LUT selected in list is already active." : "Load LUT selected in list.";
@@ -230,7 +230,7 @@ namespace UltimateEyecandy.GUI
         
         private void CheckboxChanged(UIComponent trigger, bool isChecked)
         {
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"AmbientPanel: Checkbox {trigger.name} = {isChecked}");
             }
@@ -238,18 +238,18 @@ namespace UltimateEyecandy.GUI
             if (trigger == _enableLutCheckbox)
             {
                 GetCameraBehaviour("ColorCorrectionLut").enabled = isChecked;
-                UltimateEyecandyTool.currentSettings.color_lut = isChecked;
+                EyeCandyXTool.currentSettings.color_lut = isChecked;
             }
             else if (trigger == _enableTonemappingCheckbox)
             {
                 GetCameraBehaviour("ToneMapping").enabled = isChecked;
-                UltimateEyecandyTool.currentSettings.color_tonemapping = isChecked;
+                EyeCandyXTool.currentSettings.color_tonemapping = isChecked;
                 tonemappingApplied = isChecked;
             }
             if (trigger == _enableBloomCheckbox)
             {
                 GetCameraBehaviour("Bloom").enabled = isChecked;
-                UltimateEyecandyTool.currentSettings.color_bloom = isChecked;
+                EyeCandyXTool.currentSettings.color_bloom = isChecked;
             }
         }
 

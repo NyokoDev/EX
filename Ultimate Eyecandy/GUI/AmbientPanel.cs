@@ -1,9 +1,11 @@
 ﻿using ColossalFramework;
 using ColossalFramework.UI;
 using System;
+using EyeCandyX;
 using UnityEngine;
+using ICities;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class AmbientPanel : UIPanel
     {
@@ -112,20 +114,24 @@ namespace UltimateEyecandy.GUI
 
         private void SetupControls()
         {
-            //  Time of Day:
-            var topContainer = UIUtils.CreateFormElement(this, "top");
-            topContainer.name = "heightSliderContainer";
-            _todLabel = topContainer.AddUIComponent<UILabel>();
-            _todLabel.text = "Time of Day";
-            _todLabel.textScale = 0.9f;
-            _todLabel.padding = new RectOffset(0, 0, 0, 0);
-            _todSlider = UIUtils.CreateSlider(topContainer, 0.0f, 24.0f);
-            _todSlider.name = "todSlider";
-            _todSlider.stepSize = 1f / 60.0f;
-            _todSlider.eventValueChanged += ValueChanged;
-            _todSlider.eventDragStart += timeSlider_eventDragStart;
-            _todSlider.eventMouseUp += timeSlider_eventDragEnd;
+            bool isPlayItEnabled = ModCompatibilityHelper.IsPlayItEnabled("Play It!");
 
+            //  Time of Day:
+            if (!isPlayItEnabled)
+            {
+                var topContainer = UIUtils.CreateFormElement(this, "top");
+                topContainer.name = "heightSliderContainer";
+                _todLabel = topContainer.AddUIComponent<UILabel>();
+                _todLabel.text = "Time of Day";
+                _todLabel.textScale = 0.9f;
+                _todLabel.padding = new RectOffset(0, 0, 0, 0);
+                _todSlider = UIUtils.CreateSlider(topContainer, 0.0f, 24.0f);
+                _todSlider.name = "todSlider";
+                _todSlider.stepSize = 1f / 60.0f;
+                _todSlider.eventValueChanged += ValueChanged;
+                _todSlider.eventDragStart += timeSlider_eventDragStart;
+                _todSlider.eventMouseUp += timeSlider_eventDragEnd;
+            
             //  Simulation speed:
             var speedContainer = UIUtils.CreateFormElement(this, "center");
             speedContainer.name = "sizeContainer";
@@ -138,7 +144,7 @@ namespace UltimateEyecandy.GUI
             _speedSlider.name = "speedSlider";
             _speedSlider.stepSize = 0.005f;
             _speedSlider.eventValueChanged += ValueChanged;
-
+            }
             //  Sun height (Latitude):
             var heightContainer = UIUtils.CreateFormElement(this, "center");
             heightContainer.name = "heightContainer";
@@ -151,7 +157,7 @@ namespace UltimateEyecandy.GUI
             _heightSlider = UIUtils.CreateSlider(heightContainer, -120f, 120f);
             _heightSlider.name = "heightSlider";
             _heightSlider.stepSize = 0.005f;
-            _heightSlider.value = UltimateEyecandyTool.currentSettings.ambient_height;
+            _heightSlider.value = EyeCandyXTool.currentSettings.ambient_height;
             _heightSlider.eventValueChanged += ValueChanged;
 
             //  Sun rotation (Longitude):
@@ -166,8 +172,9 @@ namespace UltimateEyecandy.GUI
             _rotationSlider = UIUtils.CreateSlider(rotationContainer, -180f, 180f);
             _rotationSlider.name = "rotationSlider";
             _rotationSlider.stepSize = 0.005f;
-            _rotationSlider.value = UltimateEyecandyTool.currentSettings.ambient_rotation;
+            _rotationSlider.value = EyeCandyXTool.currentSettings.ambient_rotation;
             _rotationSlider.eventValueChanged += ValueChanged;
+ 
 
             //  Global light intensity:
             var intensityContainer = UIUtils.CreateFormElement(this, "center");
@@ -180,7 +187,7 @@ namespace UltimateEyecandy.GUI
             _intensitySlider = UIUtils.CreateSlider(intensityContainer, 0f, 10f);
             _intensitySlider.name = "intensitySlider";
             _intensitySlider.stepSize = 0.0005f;
-            _intensitySlider.value = UltimateEyecandyTool.currentSettings.ambient_intensity;
+            _intensitySlider.value = EyeCandyXTool.currentSettings.ambient_intensity;
             _intensitySlider.eventValueChanged += ValueChanged;
 
             //  Ambient light intensity:
@@ -194,7 +201,7 @@ namespace UltimateEyecandy.GUI
             _ambientSlider = UIUtils.CreateSlider(ambientContainer, 0f, 2f);
             _ambientSlider.name = "ambientSlider";
             _ambientSlider.stepSize = 0.0005f;
-            _ambientSlider.value = UltimateEyecandyTool.currentSettings.ambient_ambient;
+            _ambientSlider.value = EyeCandyXTool.currentSettings.ambient_ambient;
             _ambientSlider.eventValueChanged += ValueChanged;
 
             ////  Sun size:
@@ -209,7 +216,7 @@ namespace UltimateEyecandy.GUI
             //_sizeSlider.name = "todSlider";
             //_sizeSlider.stepSize = 0.005f;
             ////_sizeSlider.tooltip = "Move this slider to change the size of the sun.";
-            //_sizeSlider.value = UltimateEyecandyTool.currentSettings.ambient_size;
+            //_sizeSlider.value = EyeCandyXTool.currentSettings.ambient_size;
             //_sizeSlider.eventValueChanged += ValueChanged;
 
             //  Field of View:
@@ -235,21 +242,21 @@ namespace UltimateEyecandy.GUI
             _resetAmbientButton.tooltip = "Reset all values set in this panel to default values.";
             _resetAmbientButton.eventClicked += (c, e) =>
             {
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"AmbientPanel: 'Reset' clicked.");
                 }
                 //  
-                _heightSlider.value = (UltimateEyecandyTool.isWinterMap) ? 66f : 35f;
+                _heightSlider.value = (EyeCandyXTool.isWinterMap) ? 66f : 35f;
                 _rotationSlider.value = 98f;
                 _intensitySlider.value = 6f;
-                _ambientSlider.value = (UltimateEyecandyTool.isWinterMap) ? 0.4f : 0.71f;
+                _ambientSlider.value = (EyeCandyXTool.isWinterMap) ? 0.4f : 0.71f;
             };
         }
 
         void ValueChanged(UIComponent trigger, float value)
         {
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"AmbientPanel: Slider {trigger.name} = {value}");
             }
@@ -265,32 +272,32 @@ namespace UltimateEyecandy.GUI
             if (trigger == _heightSlider)
             {
                 DayNightProperties.instance.m_Latitude = value;
-                UltimateEyecandyTool.currentSettings.ambient_height = value;
+                EyeCandyXTool.currentSettings.ambient_height = value;
                 _heightLabel.text = "Latitude (" + value.ToString() + ")";
             }
             if (trigger == _rotationSlider)
             {
                 DayNightProperties.instance.m_Longitude = value;
-                UltimateEyecandyTool.currentSettings.ambient_rotation = value;
+                EyeCandyXTool.currentSettings.ambient_rotation = value;
                 _rotationLabel.text = "Longitude (" + value.ToString() + ")";
             }
             if (trigger == _intensitySlider)
             {
                 DayNightProperties.instance.m_SunIntensity = value;
-                UltimateEyecandyTool.currentSettings.ambient_intensity = value;
+                EyeCandyXTool.currentSettings.ambient_intensity = value;
                 _intensityLabel.text = "Global light intensity (" + value.ToString() + ")";
             }
             if (trigger == _ambientSlider)
             {
                 DayNightProperties.instance.m_Exposure = value;
-                UltimateEyecandyTool.currentSettings.ambient_ambient = value;
+                EyeCandyXTool.currentSettings.ambient_ambient = value;
                 _ambientLabel.text = "Ambient light intensity (" + value.ToString() + ")";
             }
 
             //if (trigger == _sizeSlider)
             //{
             //    DayNightProperties.instance.m_SunSize = value;
-            //    UltimateEyecandyTool.currentSettings.ambient_size = value;
+            //    EyeCandyXTool.currentSettings.ambient_size = value;
             //    _sizeLabel.text = "Sun size (" + value.ToString() + ")";
             //}
             //if (trigger == _fovSlider)
@@ -302,7 +309,7 @@ namespace UltimateEyecandy.GUI
 
         void timeSlider_eventDragEnd(UIComponent trigger, UIMouseEventParameter eventParam)
         {
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"AmbientPanel: Slider {trigger.name} drag end.");
             }
@@ -311,7 +318,7 @@ namespace UltimateEyecandy.GUI
 
         void timeSlider_eventDragStart(UIComponent trigger, UIDragEventParameter eventParam)
         {
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"AmbientPanel: Slider {trigger.name} drag start.");
             }
@@ -320,9 +327,9 @@ namespace UltimateEyecandy.GUI
 
         public override void Update()
         {
-            if (UltimateEyecandyTool.isGameLoaded)
+            if (EyeCandyXTool.isGameLoaded)
             {
-                if (!UltimateEyecandyTool.config.enableSimulationControl)
+                if (!EyeCandyXTool.config.enableSimulationControl)
                 {
                     _todSlider.isEnabled = false;
                     _todLabel.text = "Time of Day (disabled)";

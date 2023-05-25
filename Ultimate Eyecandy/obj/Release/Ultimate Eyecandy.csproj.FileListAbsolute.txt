@@ -1,0 +1,15 @@
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\UltimateEyecandy.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\UltimateEyecandy.pdb
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\Assembly-CSharp.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\ColossalManaged.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\ICities.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\UnityEngine.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\UnityEngine.UI.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\PopsApiWrapper.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\Assembly-CSharp-firstpass.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\Ultimate Eyecandy.csproj.AssemblyReference.cache
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\Ultimate Eyecandy.csproj.CoreCompileInputs.cache
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\Ultimate Eyecandy.csproj.CopyComplete
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\UltimateEyecandy.dll
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\UltimateEyecandy.pdb

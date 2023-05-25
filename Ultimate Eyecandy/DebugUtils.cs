@@ -2,11 +2,11 @@
 using ColossalFramework.Plugins;
 using UnityEngine;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     class DebugUtils
     {
-        public const string modPrefix = "[Ultimate Eyecandy " + Mod.version + "] ";
+        public const string modPrefix = "[Eyecandy X " + Mod.version + "] ";
 
         public static void Message(string message)
         {

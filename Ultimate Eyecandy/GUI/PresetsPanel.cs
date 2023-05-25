@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class PresetsPanel : UIPanel
     {
@@ -49,27 +49,27 @@ namespace UltimateEyecandy.GUI
             SetupControls();
             PopulatePresetsFastList();
             //  Create temporary preset for current settings:
-            if (UltimateEyecandyTool.config.loadLastPresetOnStart && !string.IsNullOrEmpty(UltimateEyecandyTool.config.lastPreset))
+            if (EyeCandyXTool.config.loadLastPresetOnStart && !string.IsNullOrEmpty(EyeCandyXTool.config.lastPreset))
             {
                 //  Create temporary preset based on last active preset:
                 try
                 {
-                    UltimateEyecandyTool.LoadPreset(UltimateEyecandyTool.config.lastPreset, false);
-                    if (UltimateEyecandyTool.config.outputDebug)
+                    EyeCandyXTool.LoadPreset(EyeCandyXTool.config.lastPreset, false);
+                    if (EyeCandyXTool.config.outputDebug)
                     {
-                        DebugUtils.Log($"Temporary preset created based on last active preset '{UltimateEyecandyTool.config.lastPreset}'.");
+                        DebugUtils.Log($"Temporary preset created based on last active preset '{EyeCandyXTool.config.lastPreset}'.");
                     }
                 }
                 catch
                 {
                     //  Latest preset not found: create temporary preset from scratch:
-                    UltimateEyecandyTool.ResetAll();
+                    EyeCandyXTool.ResetAll();
                 }
             }
             else
             {
                 //  Fallback: create temporary preset from scratch:
-                UltimateEyecandyTool.ResetAll();
+                EyeCandyXTool.ResetAll();
             }
         }
 
@@ -110,11 +110,11 @@ namespace UltimateEyecandy.GUI
             _loadPresetButton.eventClicked += (c, e) =>
             {
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"PresetsPanel: 'Load preset' clicked: preset '{_selectedPreset.name}'.");
                 }
-                UltimateEyecandyTool.LoadPreset(_selectedPreset.name, true);
+                EyeCandyXTool.LoadPreset(_selectedPreset.name, true);
                 //  Button appearance:
                 updateButtons(true);
             };
@@ -129,14 +129,14 @@ namespace UltimateEyecandy.GUI
             _deletePresetButton.eventClicked += (c, e) =>
             {
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"PresetsPanel: 'Delete preset' clicked: preset '{_selectedPreset.name}'.");
                 }
                 ConfirmPanel.ShowModal("Delete Preset", "Are you sure you want to delete Preset '" + _selectedPreset.name + "'?", (d, i) => {
                     if (i == 1)
                     {
-                        UltimateEyecandyTool.DeletePreset(_selectedPreset);
+                        EyeCandyXTool.DeletePreset(_selectedPreset);
                         //  Update FastList:
                         PopulatePresetsFastList();
                         //  Button appearance:
@@ -161,7 +161,7 @@ namespace UltimateEyecandy.GUI
             _savePresetButton.eventClicked += (c, e) =>
             {
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"PresetsPanel: 'Save preset' clicked.");
                 }
@@ -182,14 +182,14 @@ namespace UltimateEyecandy.GUI
             _overwritePresetButton.eventClicked += (c, e) =>
             {
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"PresetsPanel: 'Overwrite preset' clicked: preset '{_selectedPreset.name}'.");
                 }
                 ConfirmPanel.ShowModal("Overwrite Preset", "Are you sure you want to overwrite Preset '" + _selectedPreset.name + "'?", (d, i) => {
                     if (i == 1)
                     {
-                        UltimateEyecandyTool.CreatePreset(_selectedPreset.name, true);
+                        EyeCandyXTool.CreatePreset(_selectedPreset.name, true);
                         //  Button appearance:
                         updateButtons(true);
                     }
@@ -206,11 +206,11 @@ namespace UltimateEyecandy.GUI
             _resetAllButton.eventClicked += (c, e) =>
             {
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"PresetsPanel: 'Reset all' clicked.");
                 }
-                UltimateEyecandyTool.ResetAll(true);
+                EyeCandyXTool.ResetAll(true);
                 //  Button appearance:
                 updateButtons(true);
             };
@@ -221,7 +221,7 @@ namespace UltimateEyecandy.GUI
             _presetFastlist.rowsData.Clear();
             _presetFastlist.selectedIndex = -1;
             //  
-            List<Configuration.Preset> allPresets = UltimateEyecandyTool.config.presets;
+            List<Configuration.Preset> allPresets = EyeCandyXTool.config.presets;
             if (allPresets.Count > 0)
             {
                 for (int i = 0; i < allPresets.Count; i++)
@@ -240,7 +240,7 @@ namespace UltimateEyecandy.GUI
         protected void OnSelectedItemChanged(UIComponent component, int i)
         {
             _selectedPreset = _presetFastlist.rowsData[i] as Configuration.Preset;
-            if (UltimateEyecandyTool.config.outputDebug)
+            if (EyeCandyXTool.config.outputDebug)
             {
                 DebugUtils.Log($"PresetsPanel: FastListItem selected: preset '{_selectedPreset.name}'.");
             }

@@ -3,7 +3,7 @@ using ColossalFramework.IO;
 using System;
 using UnityEngine;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     [Serializable]
     public class Settings

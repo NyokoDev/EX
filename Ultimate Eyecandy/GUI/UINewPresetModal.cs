@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class UINewPresetModal : UIPanel
     {
@@ -62,8 +62,8 @@ namespace UltimateEyecandy.GUI
             m_name.Focus();
             m_name.eventTextChanged += (c, s) =>
             {
-                m_ok.text = (!s.IsNullOrWhiteSpace() && UltimateEyecandyTool.GetPresetByName(s) == null) ? "Create" : "Overwrite";
-                m_name.tooltip = (UltimateEyecandyTool.GetPresetByName(s) != null) ? $"Preset '{s}' already exists: it will be overwritten!" : "Please enter a Preset name";
+                m_ok.text = (!s.IsNullOrWhiteSpace() && EyeCandyXTool.GetPresetByName(s) == null) ? "Create" : "Overwrite";
+                m_name.tooltip = (EyeCandyXTool.GetPresetByName(s) != null) ? $"Preset '{s}' already exists: it will be overwritten!" : "Please enter a Preset name";
                 m_ok.isEnabled = !s.IsNullOrWhiteSpace();
             };
 
@@ -79,13 +79,13 @@ namespace UltimateEyecandy.GUI
             m_ok.isEnabled = false;
             m_ok.eventClick += (c, p) =>
             {
-                if (UltimateEyecandyTool.GetPresetByName(m_name.text) != null)
+                if (EyeCandyXTool.GetPresetByName(m_name.text) != null)
                 {
                     //  Overwrite, confirm first:
                     ConfirmPanel.ShowModal("Overwrite Preset", "Are you sure you want to overwrite Preset '" + m_name.text + "'?", (d, i) => {
                         if (i == 1)
                         {
-                            UltimateEyecandyTool.CreatePreset(m_name.text, true);
+                            EyeCandyXTool.CreatePreset(m_name.text, true);
                             UIView.PopModal();
                             Hide();
                         }
@@ -93,7 +93,7 @@ namespace UltimateEyecandy.GUI
                 }
                 else {
                     //  Create new:
-                    UltimateEyecandyTool.CreatePreset(m_name.text, false);
+                    EyeCandyXTool.CreatePreset(m_name.text, false);
                     UIView.PopModal();
                     Hide();
                 }

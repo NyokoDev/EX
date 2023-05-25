@@ -1,7 +1,7 @@
 ﻿using ICities;
 using System;
 
-namespace UltimateEyecandy
+namespace EyeCandyX
 {
     public class LoadingExtension : LoadingExtensionBase
     {
@@ -11,7 +11,7 @@ namespace UltimateEyecandy
             try
             {
                 // Create backup:
-                UltimateEyecandyTool.SaveBackup();
+                EyeCandyXTool.SaveBackup();
             }
             catch (Exception e)
             {
@@ -27,17 +27,17 @@ namespace UltimateEyecandy
                 return;
             }
             //  
-            UltimateEyecandyTool.Initialize(mode);
-            UltimateEyecandyTool.SaveInitialValues();
-            UltimateEyecandyTool.LoadConfig();
+            EyeCandyXTool.Initialize(mode);
+            EyeCandyXTool.SaveInitialValues();
+            EyeCandyXTool.LoadConfig();
         }
 
         public override void OnLevelUnloading()
         {
             base.OnLevelUnloading();
             //  
-            UltimateEyecandyTool.isGameLoaded = false;
-            UltimateEyecandyTool.Reset();
+            EyeCandyXTool.isGameLoaded = false;
+            EyeCandyXTool.Reset();
         }
     }
 }

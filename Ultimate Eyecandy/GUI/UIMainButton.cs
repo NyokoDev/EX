@@ -2,7 +2,7 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace UltimateEyecandy.GUI
+namespace EyeCandyX.GUI
 {
     public class UIMainButton : UIButton
     {
@@ -16,24 +16,24 @@ namespace UltimateEyecandy.GUI
 
             const int buttonSize = 36;
             UITextureAtlas toggleButtonAtlas = null;
-            string UE = "UltimateEyecandy";
+            string UE = "EyeCandyX";
 
             //  Positioned relative to Freecamera Button:
             var freeCameraButton = UIView.GetAView().FindUIComponent<UIButton>("Freecamera");
             verticalAlignment = UIVerticalAlignment.Middle;
 
-            if (UltimateEyecandyTool.config.buttonPos.x == -9999)
+            if (EyeCandyXTool.config.buttonPos.x == -9999)
             {
                 absolutePosition = new Vector2(freeCameraButton.absolutePosition.x - (3 * buttonSize) - 5, freeCameraButton.absolutePosition.y);
             }
             else
             {
-                absolutePosition = UltimateEyecandyTool.config.buttonPos;
+                absolutePosition = EyeCandyXTool.config.buttonPos;
             }
             //  
             size = new Vector2(36f, 36f);
             playAudioEvents = true;
-            tooltip = "Ultimate Eyecandy " + Mod.version;
+            tooltip = "Eyecandy X";
             //  Create custom atlas:
             if (toggleButtonAtlas == null)
             {
@@ -97,10 +97,10 @@ namespace UltimateEyecandy.GUI
                 var ratio = UIView.GetAView().ratio;
                 position = new Vector3(position.x + (p.moveDelta.x * ratio), position.y + (p.moveDelta.y * ratio), position.z);
                 //  
-                UltimateEyecandyTool.config.buttonPos = absolutePosition;
-                UltimateEyecandyTool.SaveConfig();
+                EyeCandyXTool.config.buttonPos = absolutePosition;
+                EyeCandyXTool.SaveConfig();
                 //  
-                if (UltimateEyecandyTool.config.outputDebug)
+                if (EyeCandyXTool.config.outputDebug)
                 {
                     DebugUtils.Log($"Button position changed to {absolutePosition}.");
                 }
