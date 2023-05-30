@@ -1,4 +1,5 @@
-﻿using ICities;
+﻿using ColossalFramework.UI;
+using ICities;
 using System;
 
 namespace EyeCandyX
@@ -26,10 +27,40 @@ namespace EyeCandyX
             {
                 return;
             }
-            //  
-            EyeCandyXTool.Initialize(mode);
-            EyeCandyXTool.SaveInitialValues();
-            EyeCandyXTool.LoadConfig();
+
+            try
+            {
+                bool isUltimateEyecandyInstalled = CompatibilityHelper.IsUltimateEyecandyInstalled();
+                bool isEyecandyXInstalled = CompatibilityHelper.IsEyecandyXInstalled();
+
+                if (isUltimateEyecandyInstalled && isEyecandyXInstalled)
+                {
+                    
+                    PerformActionIfBothEyecandysInstalled();
+                }
+
+                // Continue with the remaining code
+                EyeCandyXTool.Initialize(mode);
+                EyeCandyXTool.SaveInitialValues();
+                EyeCandyXTool.LoadConfig();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions here
+                ShowExceptionPanel(ex);
+            }
+        }
+
+        private void PerformActionIfBothEyecandysInstalled()
+        {
+            ExceptionPanel panel = UIView.library.ShowModal<ExceptionPanel>("ExceptionPanel");
+            panel.SetMessage("Compatibility Error", "Eyecandy X has found incompatibilities with the mod Ultimate Eyecandy. Unsubscribe one of the two mods. Ignoring this message will lead to instability.", true);
+        }
+
+        private void ShowExceptionPanel(Exception ex)
+        {
+            UnityEngine.Debug.Log(ex);
+
         }
 
         public override void OnLevelUnloading()

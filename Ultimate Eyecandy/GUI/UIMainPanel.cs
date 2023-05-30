@@ -31,7 +31,7 @@ namespace EyeCandyX.GUI
             base.Start();
             instance = this;
             //  
-            backgroundSprite = (EyeCandyXTool.isEditor) ? "MenuPanel2" : "LevelBarBackground";
+            backgroundSprite = (EyeCandyXTool.isEditor) ? "MenuPanel2" : "UnlockingPanel2";
             isVisible = false;
             canFocus = true;
             isInteractive = true;
@@ -48,7 +48,7 @@ namespace EyeCandyX.GUI
         {
             //  Title Bar:
             m_title = AddUIComponent<UIMainTitleBar>();
-            m_title.title = "Eyecandy X " + Mod.version;
+            m_title.title = "Eyecandy X";
             //  Tabs:
             panelTabs = AddUIComponent<UITabstrip>();
             panelTabs.size = new Vector2(UIUtils.c_modPanelInnerWidth, UIUtils.c_tabButtonHeight);

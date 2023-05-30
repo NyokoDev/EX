@@ -80,7 +80,7 @@ namespace EyeCandyX.GUI
 
             // FastList
             _lutFastlist = UIFastList.Create<UILutItem>(topContainer);
-            _lutFastlist.backgroundSprite = "UnlockingPanel";
+            _lutFastlist.backgroundSprite = "UnlockingPanel2";
             _lutFastlist.relativePosition = new Vector3(0, 15);
             _lutFastlist.width = UIUtils.c_fastListWidth;
             _lutFastlist.height = UIUtils.c_fastListHeight - 20;
@@ -145,8 +145,8 @@ namespace EyeCandyX.GUI
             _enableTonemappingCheckbox = UIUtils.CreateCheckBox(tonemappingContainer);
             _enableTonemappingCheckbox.relativePosition = new Vector3(5, 17);
             _enableTonemappingCheckbox.name = "_enableTonemappingCheckbox";
-            //_enableTonemappingCheckbox.tooltip = "Check this box to toggle tonemapping.";
-            //_enableTonemappingCheckbox.isChecked = GetCameraBehaviour("ToneMapping");
+            _enableTonemappingCheckbox.tooltip = "Check this box to toggle tonemapping.";
+            _enableTonemappingCheckbox.isChecked = GetCameraBehaviour("ToneMapping");
             _enableTonemappingCheckbox.isChecked = true;
             _enableTonemappingCheckbox.eventCheckChanged += CheckboxChanged;
             _enableTonemappingCheckbox.label.text = "Use Tonemapping";

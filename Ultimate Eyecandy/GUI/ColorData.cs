@@ -9,7 +9,7 @@ namespace CityColors
 {
     public static class ColorData
     {
-        public static Color32 UIColor = new Color32(217, 217, 217, 255);
+        public static Color32 UIColor = new Color32(34, 34, 34, 255);
         public static readonly Color32 Pink = new Color32(255, 192, 203, 255);
         public static readonly Color32 LightBlue = new Color32(173, 216, 230, 255);
         public static readonly Color32 EmeraldGreen = new Color32(0, 201, 87, 255);

@@ -126,7 +126,7 @@ namespace EyeCandyX.GUI
         /// </summary>
         public Color32 backgroundColor
         {
-            get { return m_color; }
+            get { return ColorData.UIColor; }
             set
             {
                 m_color = value;
@@ -564,7 +564,7 @@ namespace EyeCandyX.GUI
             thumbSprite.fillDirection = UIFillDirection.Vertical;
             thumbSprite.autoSize = true;
             thumbSprite.width = 12f;
-            thumbSprite.spriteName = "LevelBarForeground";
+            thumbSprite.spriteName = "ShorelineRadioBuyButtonDisabled";
 
             m_scrollbar.thumbObject = thumbSprite;
 

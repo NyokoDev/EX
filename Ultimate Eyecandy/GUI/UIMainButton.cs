@@ -18,7 +18,7 @@ namespace EyeCandyX.GUI
             UITextureAtlas toggleButtonAtlas = null;
             string UE = "EyeCandyX";
 
-            //  Positioned relative to Freecamera Button:
+            // Positioned relative to Freecamera Button:
             var freeCameraButton = UIView.GetAView().FindUIComponent<UIButton>("Freecamera");
             verticalAlignment = UIVerticalAlignment.Middle;
 
@@ -30,37 +30,37 @@ namespace EyeCandyX.GUI
             {
                 absolutePosition = EyeCandyXTool.config.buttonPos;
             }
-            //  
+
             size = new Vector2(36f, 36f);
             playAudioEvents = true;
             tooltip = "Eyecandy X";
-            //  Create custom atlas:
+
+            // Create custom atlas:
             if (toggleButtonAtlas == null)
             {
-                toggleButtonAtlas = UIUtils.CreateAtlas(UE, buttonSize, buttonSize, "ToolbarIcon.png", new[]
-                                            {
-                                                "EyecandyNormalBg",
-                                                "EyecandyHoveredBg",
-                                                "EyecandyPressedBg",
-                                                "EyecandyNormalFg",
-                                                "EyecandyHoveredFg",
-                                                "EyecandyPressedFg",
-                                                "EyecandyButtonNormal",
-                                                "EyecandyButtonHover",
-                                                "EyecandyInfoTextBg",
-                                            });
+                toggleButtonAtlas = UIUtils.CreateAtlas(UE, buttonSize, buttonSize, "EXIcon.png", new[]
+                {
+                    "EXIconFocused",
+                    "EXIconHovered",
+                    "EXIconPressed",
+                    "EXIcon",
+                });
             }
-            //  Apply custom sprite:
+
+            // Apply custom sprite:
             atlas = toggleButtonAtlas;
-            normalFgSprite = "EyecandyNormalBg";
-            normalBgSprite = null;
-            hoveredFgSprite = "EyecandyHoveredBg";
-            hoveredBgSprite = "EyecandyHoveredFg";
-            pressedFgSprite = "EyecandyPressedBg";
-            pressedBgSprite = "EyecandyPressedFg";
-            focusedFgSprite = "EyecandyPressedBg";
-            focusedBgSprite = "EyecandyPressedFg";
+            normalFgSprite = "EXIcon";
+            normalBgSprite = "EXIconFocused";
+            hoveredFgSprite = "EXIconHovered";
+            hoveredBgSprite = "EXIconPressed";
+            pressedFgSprite = "EXIconFocused";
+            pressedBgSprite = "EXIconPressed";
+            focusedFgSprite = "EXIconFocused";
+            focusedBgSprite = "EXIconPressed";
         }
+    
+
+
 
         protected override void OnClick(UIMouseEventParameter p)
         {

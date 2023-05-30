@@ -82,7 +82,10 @@
     <Compile Include="Fraction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\ToolbarIcon.png" />
+    <EmbeddedResource Include="GUI\Assets\EXIcon.png" />
+    <EmbeddedResource Include="GUI\Assets\EXIconFocused.png" />
+    <EmbeddedResource Include="GUI\Assets\EXIconHovered.png" />
+    <EmbeddedResource Include="GUI\Assets\EXIconPressed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

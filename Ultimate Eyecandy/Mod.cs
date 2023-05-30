@@ -14,7 +14,7 @@ namespace EyeCandyX
 
         public string Name
         {
-            get { return "Eyecandy X " + version; }
+            get { return "Eyecandy X"; }
         }
 
         public string Description
@@ -32,19 +32,8 @@ namespace EyeCandyX
                 UIHelperBase group = helper.AddGroup(Name);
                 group.AddSpace(10);
 
-                // Keyboard Shortcut:
-                UIDropDown keyboardShortcutDropdown = (UIDropDown)group.AddDropdown("Select your preferred keyboard shortcut for toggling the mod panel", new[] { "Shift + U", "Ctrl + U", "Alt + U" }, EyeCandyXTool.config.keyboardShortcut,
-                    sel =>
-                    {
-                        EyeCandyXTool.config.keyboardShortcut = sel;
-                        EyeCandyXTool.SaveConfig(false);
-                    });
-                keyboardShortcutDropdown.tooltip = "Select your preferred keyboard shortcut for toggling the mod panel.";
-
-                group.AddSpace(15);
-
                 // Auto-Load Last Preset:
-                UICheckBox loadLastPresetOnStartCheckBox = (UICheckBox)group.AddCheckbox("Load last active preset on start.", EyeCandyXTool.config.loadLastPresetOnStart,
+                UICheckBox loadLastPresetOnStartCheckBox = (UICheckBox)group.AddCheckbox("Load most recent saved configuration upon start", EyeCandyXTool.config.loadLastPresetOnStart,
                     sel =>
                     {
                         if (EyeCandyXTool.config.loadLastPresetOnStart != sel)
@@ -130,11 +119,21 @@ namespace EyeCandyX
                     }
                 }
 
+                group.AddSpace(15);
+
+                // Keyboard Shortcut:
+                UIDropDown keyboardShortcutDropdown = (UIDropDown)group.AddDropdown("Choose your desired key combination for activating the mod interface.", new[] { "Shift + U", "Ctrl + U", "Alt + U" }, EyeCandyXTool.config.keyboardShortcut,
+                    sel =>
+                    {
+                        EyeCandyXTool.config.keyboardShortcut = sel;
+                        EyeCandyXTool.SaveConfig(false);
+                    });
+                keyboardShortcutDropdown.tooltip = "Choose your desired key combination for activating the mod interface.";
 
                 group.AddSpace(15);
 
                 // Output Debug Data:
-                UICheckBox debugCheckBox = (UICheckBox)group.AddCheckbox("Write data to debug log (it's going to be a lot!)", EyeCandyXTool.config.outputDebug,
+                UICheckBox debugCheckBox = (UICheckBox)group.AddCheckbox("Write data to debug log. Might harm performance.", EyeCandyXTool.config.outputDebug,
                     b =>
                     {
                         if (EyeCandyXTool.config.outputDebug != b)
@@ -144,10 +143,8 @@ namespace EyeCandyX
                         }
                     });
 
-
-                debugCheckBox.tooltip = "Output messages to debug log. This may be useful when experiencing issues with this mod.";
-                //group.AddSpace(20);
-
+                // Set the tooltip for the debugCheckBox
+                debugCheckBox.tooltip = "Direct messages to the debug log. This can prove beneficial when encountering problems with this mod.";
             }
             catch (Exception e)
             {
