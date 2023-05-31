@@ -10,7 +10,7 @@ namespace EyeCandyX
 {
     public class Mod : IUserMod
     {
-        public const string version = "1.0";
+        public const string version = "1.1";
 
         public string Name
         {

@@ -4,6 +4,8 @@ using System;
 using EyeCandyX;
 using UnityEngine;
 using ICities;
+using CompCheck;
+using System.IO;
 
 namespace EyeCandyX.GUI
 {
@@ -114,10 +116,19 @@ namespace EyeCandyX.GUI
 
         private void SetupControls()
         {
-            bool isPlayItEnabled = ModCompatibilityHelper.IsPlayItEnabled("Play It!");
-
-            //  Time of Day:
-            if (!isPlayItEnabled)
+            // Time of Day:
+            if (!CompatibilityHelper.IsPlayItInstalled)
+            {
+                // Show the panel
+                var ambient2Container = UIUtils.CreateFormElement(this, "center");
+                ambient2Container.name = "ambientContainer";
+                ambient2Container.relativePosition = new Vector3(0, 355);
+                _ambientLabel = ambient2Container.AddUIComponent<UILabel>();
+                _ambientLabel.text = "Simulation, Time of Day has been disabled because you have 1 or 2 more mods that overlap this function.";
+                _ambientLabel.textScale = 0.9f;
+                _ambientLabel.padding = new RectOffset(0, 0, 0, 0);
+            }
+            else
             {
                 var topContainer = UIUtils.CreateFormElement(this, "top");
                 topContainer.name = "heightSliderContainer";
@@ -131,8 +142,9 @@ namespace EyeCandyX.GUI
                 _todSlider.eventValueChanged += ValueChanged;
                 _todSlider.eventDragStart += timeSlider_eventDragStart;
                 _todSlider.eventMouseUp += timeSlider_eventDragEnd;
-            
-            //  Simulation speed:
+            }
+
+            // Simulation speed:
             var speedContainer = UIUtils.CreateFormElement(this, "center");
             speedContainer.name = "sizeContainer";
             speedContainer.relativePosition = new Vector3(0, 95);
@@ -144,14 +156,13 @@ namespace EyeCandyX.GUI
             _speedSlider.name = "speedSlider";
             _speedSlider.stepSize = 0.005f;
             _speedSlider.eventValueChanged += ValueChanged;
-            }
-            //  Sun height (Latitude):
+
+            // Sun height (Latitude):
             var heightContainer = UIUtils.CreateFormElement(this, "center");
             heightContainer.name = "heightContainer";
             heightContainer.relativePosition = new Vector3(0, 160);
             _heightLabel = heightContainer.AddUIComponent<UILabel>();
-            //_heightLabel.text = "Sun height (0)";
-            _heightLabel.text = "Lattitude (0)";
+            _heightLabel.text = "Latitude (0)";
             _heightLabel.textScale = 0.9f;
             _heightLabel.padding = new RectOffset(0, 0, 0, 0);
             _heightSlider = UIUtils.CreateSlider(heightContainer, -120f, 120f);
@@ -160,12 +171,11 @@ namespace EyeCandyX.GUI
             _heightSlider.value = EyeCandyXTool.currentSettings.ambient_height;
             _heightSlider.eventValueChanged += ValueChanged;
 
-            //  Sun rotation (Longitude):
+            // Sun rotation (Longitude):
             var rotationContainer = UIUtils.CreateFormElement(this, "center");
             rotationContainer.name = "rotationContainer";
             rotationContainer.relativePosition = new Vector3(0, 225);
             _rotationLabel = rotationContainer.AddUIComponent<UILabel>();
-            //_rotationLabel.text = "Sun rotation (0)";
             _rotationLabel.text = "Longitude (0)";
             _rotationLabel.textScale = 0.9f;
             _rotationLabel.padding = new RectOffset(0, 0, 0, 0);
@@ -174,9 +184,8 @@ namespace EyeCandyX.GUI
             _rotationSlider.stepSize = 0.005f;
             _rotationSlider.value = EyeCandyXTool.currentSettings.ambient_rotation;
             _rotationSlider.eventValueChanged += ValueChanged;
- 
 
-            //  Global light intensity:
+            // Global light intensity:
             var intensityContainer = UIUtils.CreateFormElement(this, "center");
             intensityContainer.name = "intensityContainer";
             intensityContainer.relativePosition = new Vector3(0, 290);
@@ -190,7 +199,7 @@ namespace EyeCandyX.GUI
             _intensitySlider.value = EyeCandyXTool.currentSettings.ambient_intensity;
             _intensitySlider.eventValueChanged += ValueChanged;
 
-            //  Ambient light intensity:
+            // Ambient light intensity:
             var ambientContainer = UIUtils.CreateFormElement(this, "center");
             ambientContainer.name = "ambientContainer";
             ambientContainer.relativePosition = new Vector3(0, 355);
@@ -204,37 +213,7 @@ namespace EyeCandyX.GUI
             _ambientSlider.value = EyeCandyXTool.currentSettings.ambient_ambient;
             _ambientSlider.eventValueChanged += ValueChanged;
 
-            ////  Sun size:
-            //var sizeContainer = UIUtils.CreateFormElement(this, "center");
-            //sizeContainer.name = "sizeContainer";
-            //sizeContainer.relativePosition = new Vector3(0, 170);
-            //_sizeLabel = sizeContainer.AddUIComponent<UILabel>();
-            //_sizeLabel.text = "Sun size";
-            //_sizeLabel.textScale = 0.9f;
-            //_sizeLabel.padding = new RectOffset(0, 0, 0, 0);
-            //_sizeSlider = UIUtils.CreateSlider(sizeContainer, 0.01f, 10.0f);
-            //_sizeSlider.name = "todSlider";
-            //_sizeSlider.stepSize = 0.005f;
-            ////_sizeSlider.tooltip = "Move this slider to change the size of the sun.";
-            //_sizeSlider.value = EyeCandyXTool.currentSettings.ambient_size;
-            //_sizeSlider.eventValueChanged += ValueChanged;
-
-            //  Field of View:
-            //var fovContainer = UIUtils.CreateFormElement(this, "center");
-            //fovContainer.name = "fovContainer";
-            //fovContainer.relativePosition = new Vector3(0, 220);
-            //_fovLabel = fovContainer.AddUIComponent<UILabel>();
-            //_fovLabel.text = "Field of View (45)";
-            //_fovLabel.textScale = 0.9f;
-            //_fovLabel.padding = new RectOffset(0, 0, 0, 0);
-            //_fovSlider = UIUtils.CreateSlider(fovContainer, 10f, 80f);
-            //_fovSlider.name = "fovSlider";
-            //_fovSlider.stepSize = 0.5f;
-            ////_fovSlider.tooltip = "Move this slider to change the Field of View (FoV).";
-            //_fovSlider.value = 45f;
-            //_fovSlider.eventValueChanged += ValueChanged;
-
-            //  Reset button:
+            // Reset button:
             var resetContainer = UIUtils.CreateFormElement(this, "bottom");
             _resetAmbientButton = UIUtils.CreateButton(resetContainer);
             _resetAmbientButton.name = "resetButton";
@@ -246,12 +225,12 @@ namespace EyeCandyX.GUI
                 {
                     DebugUtils.Log($"AmbientPanel: 'Reset' clicked.");
                 }
-                //  
-                _heightSlider.value = (EyeCandyXTool.isWinterMap) ? 66f : 35f;
+                _heightSlider.value = EyeCandyXTool.isWinterMap ? 66f : 35f;
                 _rotationSlider.value = 98f;
                 _intensitySlider.value = 6f;
-                _ambientSlider.value = (EyeCandyXTool.isWinterMap) ? 0.4f : 0.71f;
+                _ambientSlider.value = EyeCandyXTool.isWinterMap ? 0.4f : 0.71f;
             };
+
         }
 
         void ValueChanged(UIComponent trigger, float value)
