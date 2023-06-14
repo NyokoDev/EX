@@ -62,7 +62,6 @@
     <Compile Include="GUI\PresetsPanel.cs" />
     <Compile Include="GUI\UIFastList.cs" />
     <Compile Include="GUI\UILutItem.cs" />
-    <Content Include="Locale\english.xml" />
     <Compile Include="Locale\TranslationID.cs" />
     <Compile Include="TranslationFramework\TranslationUtil.cs" />
     <Compile Include="TranslationFramework\TranslatableAttribute.cs" />
@@ -91,12 +90,8 @@
     <EmbeddedResource Include="Assets\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Locale\english.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Locale\TranslationID.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Locale\spanish.xml" />
+    <Content Include="Locale\english.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
