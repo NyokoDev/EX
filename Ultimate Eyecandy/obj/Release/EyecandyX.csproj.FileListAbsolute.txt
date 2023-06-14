@@ -13,3 +13,6 @@ C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\Eyecandy
 C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\EyecandyX.csproj.CopyComplete
 C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\EyecandyX.dll
 C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\obj\Release\EyecandyX.pdb
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\Locale\english.xml
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\Locale\spanish.xml
+C:\Users\JORVA\Documents\CS MODS\eyecandy\Ultimate Eyecandy\bin\Release\Locale\TranslationID.cs

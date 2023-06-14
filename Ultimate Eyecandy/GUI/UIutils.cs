@@ -499,7 +499,7 @@ namespace EyeCandyX.GUI
             };
 
             var assembly = Assembly.GetExecutingAssembly();
-            using (var textureStream = assembly.GetManifestResourceStream(name + "GUI.Assets." + file))
+            using (var textureStream = assembly.GetManifestResourceStream(name + ".Assets." + file))
             {
                 var buf = new byte[textureStream.Length];
                 textureStream.Read(buf, 0, buf.Length);

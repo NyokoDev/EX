@@ -6,6 +6,7 @@ using UnityEngine;
 using ICities;
 using CompCheck;
 using System.IO;
+using EyeCandyX.TranslationFramework;
 
 namespace EyeCandyX.GUI
 {
@@ -117,23 +118,12 @@ namespace EyeCandyX.GUI
         private void SetupControls()
         {
             // Time of Day:
-            if (!CompatibilityHelper.IsPlayItInstalled)
-            {
-                // Show the panel
-                var ambient2Container = UIUtils.CreateFormElement(this, "center");
-                ambient2Container.name = "ambientContainer";
-                ambient2Container.relativePosition = new Vector3(0, 355);
-                _ambientLabel = ambient2Container.AddUIComponent<UILabel>();
-                _ambientLabel.text = "Simulation, Time of Day has been disabled because you have 1 or 2 more mods that overlap this function.";
-                _ambientLabel.textScale = 0.9f;
-                _ambientLabel.padding = new RectOffset(0, 0, 0, 0);
-            }
-            else
+            
             {
                 var topContainer = UIUtils.CreateFormElement(this, "top");
                 topContainer.name = "heightSliderContainer";
                 _todLabel = topContainer.AddUIComponent<UILabel>();
-                _todLabel.text = "Time of Day";
+                _todLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.TIME_DAY_TEXT);
                 _todLabel.textScale = 0.9f;
                 _todLabel.padding = new RectOffset(0, 0, 0, 0);
                 _todSlider = UIUtils.CreateSlider(topContainer, 0.0f, 24.0f);
@@ -149,7 +139,7 @@ namespace EyeCandyX.GUI
             speedContainer.name = "sizeContainer";
             speedContainer.relativePosition = new Vector3(0, 95);
             _speedLabel = speedContainer.AddUIComponent<UILabel>();
-            _speedLabel.text = "Day/night cycle speed";
+            _speedLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DAYNIGHTCYCLE_TEXT);
             _speedLabel.textScale = 0.9f;
             _speedLabel.padding = new RectOffset(0, 0, 0, 0);
             _speedSlider = UIUtils.CreateSlider(speedContainer, 0f, speeds.Length);
@@ -162,7 +152,7 @@ namespace EyeCandyX.GUI
             heightContainer.name = "heightContainer";
             heightContainer.relativePosition = new Vector3(0, 160);
             _heightLabel = heightContainer.AddUIComponent<UILabel>();
-            _heightLabel.text = "Latitude (0)";
+            _heightLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LAT_TEXT) + "(0)";
             _heightLabel.textScale = 0.9f;
             _heightLabel.padding = new RectOffset(0, 0, 0, 0);
             _heightSlider = UIUtils.CreateSlider(heightContainer, -120f, 120f);
@@ -176,7 +166,7 @@ namespace EyeCandyX.GUI
             rotationContainer.name = "rotationContainer";
             rotationContainer.relativePosition = new Vector3(0, 225);
             _rotationLabel = rotationContainer.AddUIComponent<UILabel>();
-            _rotationLabel.text = "Longitude (0)";
+            _rotationLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOT_TEXT) + "(0)";
             _rotationLabel.textScale = 0.9f;
             _rotationLabel.padding = new RectOffset(0, 0, 0, 0);
             _rotationSlider = UIUtils.CreateSlider(rotationContainer, -180f, 180f);
@@ -252,25 +242,25 @@ namespace EyeCandyX.GUI
             {
                 DayNightProperties.instance.m_Latitude = value;
                 EyeCandyXTool.currentSettings.ambient_height = value;
-                _heightLabel.text = "Latitude (" + value.ToString() + ")";
+                _heightLabel.text = "(" + value.ToString() + ")";
             }
             if (trigger == _rotationSlider)
             {
                 DayNightProperties.instance.m_Longitude = value;
                 EyeCandyXTool.currentSettings.ambient_rotation = value;
-                _rotationLabel.text = "Longitude (" + value.ToString() + ")";
+                _rotationLabel.text = "(" + value.ToString() + ")";
             }
             if (trigger == _intensitySlider)
             {
                 DayNightProperties.instance.m_SunIntensity = value;
                 EyeCandyXTool.currentSettings.ambient_intensity = value;
-                _intensityLabel.text = "Global light intensity (" + value.ToString() + ")";
+                _intensityLabel.text = "(" + value.ToString() + ")";
             }
             if (trigger == _ambientSlider)
             {
                 DayNightProperties.instance.m_Exposure = value;
                 EyeCandyXTool.currentSettings.ambient_ambient = value;
-                _ambientLabel.text = "Ambient light intensity (" + value.ToString() + ")";
+                _ambientLabel.text = "(" + value.ToString() + ")";
             }
 
             //if (trigger == _sizeSlider)

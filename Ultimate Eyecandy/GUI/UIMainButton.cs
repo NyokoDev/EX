@@ -38,27 +38,33 @@ namespace EyeCandyX.GUI
             // Create custom atlas:
             if (toggleButtonAtlas == null)
             {
-                toggleButtonAtlas = UIUtils.CreateAtlas(UE, buttonSize, buttonSize, "EXIcon.png", new[]
+                toggleButtonAtlas = UIUtils.CreateAtlas(UE, buttonSize, buttonSize, "Icon.png", new[]
                 {
-                    "EXIconFocused",
-                    "EXIconHovered",
-                    "EXIconPressed",
-                    "EXIcon",
-                });
+                                                "EyecandyNormalBg",
+                                                "EyecandyHoveredBg",
+                                                "EyecandyPressedBg",
+                                                "EyecandyNormalFg",
+                                                "EyecandyHoveredFg",
+                                                "EyecandyPressedFg",
+                                                "EyecandyButtonNormal",
+                                                "EyecandyButtonHover",
+                                                "EyecandyInfoTextBg",
+                                            });
             }
 
             // Apply custom sprite:
             atlas = toggleButtonAtlas;
-            normalFgSprite = "EXIcon";
-            normalBgSprite = "EXIconFocused";
-            hoveredFgSprite = "EXIconHovered";
-            hoveredBgSprite = "EXIconPressed";
-            pressedFgSprite = "EXIconFocused";
-            pressedBgSprite = "EXIconPressed";
-            focusedFgSprite = "EXIconFocused";
-            focusedBgSprite = "EXIconPressed";
+            normalFgSprite = "EyecandyNormalBg";
+            normalBgSprite = null;
+            hoveredFgSprite = "EyecandyHoveredBg";
+            hoveredBgSprite = "EyecandyHoveredFg";
+            pressedFgSprite = "EyecandyPressedBg";
+            pressedBgSprite = "EyecandyPressedFg";
+            focusedFgSprite = "EyecandyPressedBg";
+            focusedBgSprite = "EyecandyPressedFg";
         }
-    
+
+
 
 
 
