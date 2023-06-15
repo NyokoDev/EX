@@ -1,6 +1,8 @@
 ﻿using CityColors;
 using ColossalFramework.Plugins;
 using ColossalFramework.UI;
+using EyecandyX.Locale;
+using EyeCandyX.TranslationFramework;
 using ICities;
 using System;
 using UnityEngine;
@@ -10,17 +12,13 @@ namespace EyeCandyX
 {
     public class Mod : IUserMod
     {
-        public const string version = "1.1";
+        public string Name => Translation.Instance.GetTranslation(TranslationID.MOD_NAME);
 
-        public string Name
-        {
-            get { return "Eyecandy X"; }
-        }
+        public string Description => Translation.Instance.GetTranslation(TranslationID.MOD_DESCRIPTION);
 
-        public string Description
-        {
-            get { return "Enhance your city's visuals with this beginner-friendly visual customization tool."; }
-        }
+        public const string version = "1.2";
+
+
 
         // Mod options:
         public void OnSettingsUI(UIHelperBase helper)

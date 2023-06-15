@@ -4,6 +4,7 @@ using System.Linq;
 using ColossalFramework.UI;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using EyeCandyX.TranslationFramework;
 
 namespace EyeCandyX.GUI
 {
@@ -74,7 +75,7 @@ namespace EyeCandyX.GUI
             var topContainer = UIUtils.CreateFormElement(this, "top");
 
             _lutLabel = topContainer.AddUIComponent<UILabel>();
-            _lutLabel.text = "Select LUT";
+            _lutLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.SELECTLUT_TEXT);
             _lutLabel.textScale = 0.9f;
             _lutLabel.padding = new RectOffset(0, 0, 0, 5);
 
@@ -100,8 +101,8 @@ namespace EyeCandyX.GUI
             _loadLutButton.opacity = 0.5f;
             _loadLutButton.relativePosition = new Vector3(5, 10);
             _loadLutButton.name = "loadLutButton";
-            _loadLutButton.text = "Load lut";
-            _loadLutButton.tooltip = "LUT selected in list is already active.";
+            _loadLutButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOADLUT_TEXT);
+            _loadLutButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.ALREADYACTLUT_TEXT);
             _loadLutButton.eventClicked += (c, e) =>
             {
                 try
@@ -135,7 +136,7 @@ namespace EyeCandyX.GUI
             //_enableLutCheckbox.isChecked = GetCameraBehaviour("ColorCorrectionLut");
             _enableLutCheckbox.isChecked = true;
             _enableLutCheckbox.eventCheckChanged += CheckboxChanged;
-            _enableLutCheckbox.label.text = "Use LUT Color Correction";
+            _enableLutCheckbox.label.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.ENABLELUT_TEXT); 
 
             //  Tonemapping:
             var tonemappingContainer = UIUtils.CreateFormElement(this, "center");
@@ -145,11 +146,11 @@ namespace EyeCandyX.GUI
             _enableTonemappingCheckbox = UIUtils.CreateCheckBox(tonemappingContainer);
             _enableTonemappingCheckbox.relativePosition = new Vector3(5, 17);
             _enableTonemappingCheckbox.name = "_enableTonemappingCheckbox";
-            _enableTonemappingCheckbox.tooltip = "Check this box to toggle tonemapping.";
+            _enableTonemappingCheckbox.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.TM_TOOLTIP_TEXT);
             _enableTonemappingCheckbox.isChecked = GetCameraBehaviour("ToneMapping");
             _enableTonemappingCheckbox.isChecked = true;
             _enableTonemappingCheckbox.eventCheckChanged += CheckboxChanged;
-            _enableTonemappingCheckbox.label.text = "Use Tonemapping";
+            _enableTonemappingCheckbox.label.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.ENABLE_TM_TEXT);
 
             //  Bloom:
             var bloomContainer = UIUtils.CreateFormElement(this, "center");
@@ -164,15 +165,15 @@ namespace EyeCandyX.GUI
             //_enableBloomCheckbox.isChecked = GetCameraBehaviour("Bloom");
             _enableBloomCheckbox.isChecked = true;
             _enableBloomCheckbox.eventCheckChanged += CheckboxChanged;
-            _enableBloomCheckbox.label.text = "Use Bloom";
+            _enableBloomCheckbox.label.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.ENABLE_BLOOM_TEXT);
 
             //  Reset button:
             var bottomContainer = UIUtils.CreateFormElement(this, "bottom");
 
             _resetColorManagementButton = UIUtils.CreateButton(bottomContainer);
             _resetColorManagementButton.name = "resetButton";
-            _resetColorManagementButton.text = "Reset";
-            _resetColorManagementButton.tooltip = "Reset all values set in this panel to default values.";
+            _resetColorManagementButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_BUTTON_TEXT);
+            _resetColorManagementButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_VALUES_TOOLTIP);
             _resetColorManagementButton.eventClicked += (c, e) =>
             {
                 if (EyeCandyXTool.config.outputDebug)
@@ -220,7 +221,8 @@ namespace EyeCandyX.GUI
             var isActive = (_selectedLut.internal_name == EyeCandyXTool.currentSettings.color_selectedlut);
             _loadLutButton.isEnabled = (isActive) ? false : true;
             _loadLutButton.opacity = (isActive) ? 0.5f : 1.0f;
-            _loadLutButton.tooltip = (isActive) ? "LUT selected in list is already active." : "Load LUT selected in list.";
+            
+            _loadLutButton.tooltip = (isActive) ? Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LUT_ALREADY_ACTIVE_NOTICE) : Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOAD_LUT_SELECTED);
         }
 
         protected void OnEnableStateChanged(UIComponent component, bool state)

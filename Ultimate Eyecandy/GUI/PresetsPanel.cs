@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ColossalFramework.UI;
+using EyeCandyX.TranslationFramework;
 using UnityEngine;
 
 namespace EyeCandyX.GUI
@@ -79,7 +80,7 @@ namespace EyeCandyX.GUI
             var topContainer = UIUtils.CreateFormElement(this, "top");
 
             _presetLabel = topContainer.AddUIComponent<UILabel>();
-            _presetLabel.text = "Load preset";
+            _presetLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOADPRESET_TEXT);
             _presetLabel.textScale = 0.9f;
             _presetLabel.padding = new RectOffset(0, 0, 0, 5);
 
@@ -105,8 +106,8 @@ namespace EyeCandyX.GUI
             _loadPresetButton.isEnabled = false;
             _loadPresetButton.relativePosition = new Vector3(5, 10);
             _loadPresetButton.name = "loadPresetButton";
-            _loadPresetButton.text = "Load preset";
-            _loadPresetButton.tooltip = "Load Preset selected in list.";
+            _loadPresetButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOADPRESET_TEXT);
+            _loadPresetButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOADPRESET_TOOLTIP);
             _loadPresetButton.eventClicked += (c, e) =>
             {
                 //  
@@ -124,8 +125,8 @@ namespace EyeCandyX.GUI
             _deletePresetButton.isEnabled = false;
             _deletePresetButton.relativePosition = new Vector3(272, 10);
             _deletePresetButton.name = "deletePresetButton";
-            _deletePresetButton.text = "Delete preset";
-            _deletePresetButton.tooltip = "Delete Preset selected in list.";
+            _deletePresetButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DELETEPRESET_TEXT);
+            _deletePresetButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DELETEPRESET_TOOLTIP);
             _deletePresetButton.eventClicked += (c, e) =>
             {
                 //  
@@ -133,7 +134,7 @@ namespace EyeCandyX.GUI
                 {
                     DebugUtils.Log($"PresetsPanel: 'Delete preset' clicked: preset '{_selectedPreset.name}'.");
                 }
-                ConfirmPanel.ShowModal("Delete Preset", "Are you sure you want to delete Preset '" + _selectedPreset.name + "'?", (d, i) => {
+                ConfirmPanel.ShowModal(Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXCEPTIONDELETEPRESET), Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXCEPTIONDELETEPRESET2) + _selectedPreset.name + "'?", (d, i) => {
                     if (i == 1)
                     {
                         EyeCandyXTool.DeletePreset(_selectedPreset);
@@ -155,9 +156,9 @@ namespace EyeCandyX.GUI
             _savePresetButton = UIUtils.CreateButton(saveOverwriteContainer);
             _savePresetButton.relativePosition = new Vector3(5, 10);
             _savePresetButton.name = "savePresetButton";
-            _savePresetButton.text = "Save as new";
+            _savePresetButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.SAVEPRESET_TEXT);
             //  Todo: add all settings to tooltip(?)
-            _savePresetButton.tooltip = "Save current settings as a new Preset (create New Preset).";
+            _savePresetButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.SAVESETTINGS_TOOLTIP);
             _savePresetButton.eventClicked += (c, e) =>
             {
                 //  
@@ -177,8 +178,8 @@ namespace EyeCandyX.GUI
             _overwritePresetButton.isEnabled = false;
             _overwritePresetButton.relativePosition = new Vector3(272, 10);
             _overwritePresetButton.name = "overwritePresetButton";
-            _overwritePresetButton.text = "Overwrite";
-            _overwritePresetButton.tooltip = "Save current settings as the Preset selected in the list (overwrite Existing Preset).";
+            _overwritePresetButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.OVERWRITE);
+            _overwritePresetButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.OVERWRITE_TOOLTIP);
             _overwritePresetButton.eventClicked += (c, e) =>
             {
                 //  
@@ -186,7 +187,7 @@ namespace EyeCandyX.GUI
                 {
                     DebugUtils.Log($"PresetsPanel: 'Overwrite preset' clicked: preset '{_selectedPreset.name}'.");
                 }
-                ConfirmPanel.ShowModal("Overwrite Preset", "Are you sure you want to overwrite Preset '" + _selectedPreset.name + "'?", (d, i) => {
+                ConfirmPanel.ShowModal(Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXCEPTIONOVERWRITE_TEXT), Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXCEPTIONOVERWRITE_TEXT2) + _selectedPreset.name + "'?", (d, i) => {
                     if (i == 1)
                     {
                         EyeCandyXTool.CreatePreset(_selectedPreset.name, true);
@@ -196,13 +197,13 @@ namespace EyeCandyX.GUI
                 });
             };
 
-            //  Reset all:
+            //  Reset all:zz
             var resetContainer = UIUtils.CreateFormElement(this, "bottom");
 
             _resetAllButton = UIUtils.CreateButton(resetContainer);
             _resetAllButton.name = "resetAllButton";
-            _resetAllButton.text = "Reset all";
-            _resetAllButton.tooltip = "Reset all values set in all panels to default values.";
+            _resetAllButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_BUTTON_TEXT);
+            _resetAllButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_VALUES_TOOLTIP);
             _resetAllButton.eventClicked += (c, e) =>
             {
                 //  

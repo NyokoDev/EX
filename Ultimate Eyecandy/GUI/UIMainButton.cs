@@ -54,8 +54,8 @@ namespace EyeCandyX.GUI
 
             // Apply custom sprite:
             atlas = toggleButtonAtlas;
-            normalFgSprite = "EyecandyNormalBg";
-            normalBgSprite = null;
+            normalFgSprite = "EyecandyNormalFg";
+            normalBgSprite = "EyecandyNormalBg";
             hoveredFgSprite = "EyecandyHoveredBg";
             hoveredBgSprite = "EyecandyHoveredFg";
             pressedFgSprite = "EyecandyPressedBg";
@@ -63,10 +63,6 @@ namespace EyeCandyX.GUI
             focusedFgSprite = "EyecandyPressedBg";
             focusedBgSprite = "EyecandyPressedFg";
         }
-
-
-
-
 
         protected override void OnClick(UIMouseEventParameter p)
         {

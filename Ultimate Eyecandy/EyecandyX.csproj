@@ -90,8 +90,15 @@
     <EmbeddedResource Include="Assets\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Locale\spanish.xml" />
-    <Content Include="Locale\english.xml" />
+    <Content Include="Locale\Korean %28ko%29.xml" />
+    <Content Include="Locale\Russian %28ru%29.xml" />
+    <Content Include="Locale\Portuguese %28pt-BR%29 .xml" />
+    <Content Include="Locale\Polish %28pl%29.xml" />
+    <Content Include="Locale\German %28de%29.xml" />
+    <Content Include="Locale\French %28fr%29.xml" />
+    <Content Include="Locale\Chinese %28zh-CN%29.xml" />
+    <Content Include="Locale\Spanish %28ES%29.xml" />
+    <Content Include="Locale\English %28EN%29.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

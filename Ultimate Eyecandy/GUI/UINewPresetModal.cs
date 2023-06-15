@@ -1,5 +1,6 @@
 ﻿using ColossalFramework;
 using ColossalFramework.UI;
+using EyeCandyX.TranslationFramework;
 using UnityEngine;
 
 namespace EyeCandyX.GUI
@@ -38,14 +39,14 @@ namespace EyeCandyX.GUI
 
             // Title Bar:
             m_title = AddUIComponent<UIModalTitleBar>();
-            m_title.title = "Create New Preset";
+            m_title.title = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.CreateNewPreset);
             m_title.isModal = true;
             m_title.relativePosition = new Vector3(10, 5);
 
             // Name:
             UILabel name = AddUIComponent<UILabel>();
             name.height = 30;
-            name.text = "Preset name:";
+            name.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.PresetName);
             name.textScale = 0.8f;
             name.relativePosition = new Vector3(10, m_title.height);
 
@@ -56,14 +57,14 @@ namespace EyeCandyX.GUI
             m_name.padding = new RectOffset(6, 6, 6, 6);
             m_name.textColor = new Color32(222, 222, 222, 255);
             m_name.textScale = 0.8f;
-            //m_name.tooltip = "Please enter a Preset name";
+            //m_name.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.PresetNameTooltip);
             m_name.relativePosition = new Vector3(10, name.relativePosition.y + name.height + 5);
 
             m_name.Focus();
             m_name.eventTextChanged += (c, s) =>
             {
-                m_ok.text = (!s.IsNullOrWhiteSpace() && EyeCandyXTool.GetPresetByName(s) == null) ? "Create" : "Overwrite";
-                m_name.tooltip = (EyeCandyXTool.GetPresetByName(s) != null) ? $"Preset '{s}' already exists: it will be overwritten!" : "Please enter a Preset name";
+                m_ok.text = (!s.IsNullOrWhiteSpace() && EyeCandyXTool.GetPresetByName(s) == null) ? Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.Create) : Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.OverwritePreset);
+                m_name.tooltip = (EyeCandyXTool.GetPresetByName(s) != null) ? Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.PresetExists) : Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.PresetNameTooltip);
                 m_ok.isEnabled = !s.IsNullOrWhiteSpace();
             };
 
@@ -75,14 +76,14 @@ namespace EyeCandyX.GUI
             // Ok button:
             m_ok = UIUtils.CreateButton(this);
             m_ok.relativePosition = new Vector3(11, m_name.relativePosition.y + m_name.height + 10);
-            m_ok.text = "Create";
+            m_ok.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.Create);
             m_ok.isEnabled = false;
             m_ok.eventClick += (c, p) =>
             {
                 if (EyeCandyXTool.GetPresetByName(m_name.text) != null)
                 {
                     //  Overwrite, confirm first:
-                    ConfirmPanel.ShowModal("Overwrite Preset", "Are you sure you want to overwrite Preset '" + m_name.text + "'?", (d, i) => {
+                    ConfirmPanel.ShowModal(Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.OverwritePreset), string.Format(Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.ConfirmOverwrite), m_name.text), (d, i) => {
                         if (i == 1)
                         {
                             EyeCandyXTool.CreatePreset(m_name.text, true);
@@ -91,7 +92,8 @@ namespace EyeCandyX.GUI
                         }
                     });
                 }
-                else {
+                else
+                {
                     //  Create new:
                     EyeCandyXTool.CreatePreset(m_name.text, false);
                     UIView.PopModal();
@@ -102,7 +104,7 @@ namespace EyeCandyX.GUI
             // Cancel button:
             m_cancel = UIUtils.CreateButton(this);
             m_cancel.relativePosition = new Vector3(width - m_cancel.width - 11, m_ok.relativePosition.y + 1);
-            m_cancel.text = "Cancel";
+            m_cancel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.Cancel);
             m_cancel.eventClick += (c, p) =>
             {
                 UIView.PopModal();

@@ -180,7 +180,7 @@ namespace EyeCandyX.GUI
             intensityContainer.name = "intensityContainer";
             intensityContainer.relativePosition = new Vector3(0, 290);
             _intensityLabel = intensityContainer.AddUIComponent<UILabel>();
-            _intensityLabel.text = "Global light intensity (0)";
+            _intensityLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.SUNINTENSITY) + "(0)";
             _intensityLabel.textScale = 0.9f;
             _intensityLabel.padding = new RectOffset(0, 0, 0, 0);
             _intensitySlider = UIUtils.CreateSlider(intensityContainer, 0f, 10f);
@@ -194,7 +194,7 @@ namespace EyeCandyX.GUI
             ambientContainer.name = "ambientContainer";
             ambientContainer.relativePosition = new Vector3(0, 355);
             _ambientLabel = ambientContainer.AddUIComponent<UILabel>();
-            _ambientLabel.text = "Ambient light intensity (0)";
+            _ambientLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXPOSURE) + "(0)";
             _ambientLabel.textScale = 0.9f;
             _ambientLabel.padding = new RectOffset(0, 0, 0, 0);
             _ambientSlider = UIUtils.CreateSlider(ambientContainer, 0f, 2f);
@@ -207,8 +207,8 @@ namespace EyeCandyX.GUI
             var resetContainer = UIUtils.CreateFormElement(this, "bottom");
             _resetAmbientButton = UIUtils.CreateButton(resetContainer);
             _resetAmbientButton.name = "resetButton";
-            _resetAmbientButton.text = "Reset";
-            _resetAmbientButton.tooltip = "Reset all values set in this panel to default values.";
+            _resetAmbientButton.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_BUTTON_TEXT); 
+            _resetAmbientButton.tooltip = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.RESET_VALUES_TOOLTIP);
             _resetAmbientButton.eventClicked += (c, e) =>
             {
                 if (EyeCandyXTool.config.outputDebug)
@@ -242,25 +242,25 @@ namespace EyeCandyX.GUI
             {
                 DayNightProperties.instance.m_Latitude = value;
                 EyeCandyXTool.currentSettings.ambient_height = value;
-                _heightLabel.text = "(" + value.ToString() + ")";
+                _heightLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LAT_TEXT) + "(" + value.ToString() + ")";
             }
             if (trigger == _rotationSlider)
             {
                 DayNightProperties.instance.m_Longitude = value;
                 EyeCandyXTool.currentSettings.ambient_rotation = value;
-                _rotationLabel.text = "(" + value.ToString() + ")";
+                _rotationLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.LOT_TEXT) + "(" + value.ToString() + ")";
             }
             if (trigger == _intensitySlider)
             {
                 DayNightProperties.instance.m_SunIntensity = value;
                 EyeCandyXTool.currentSettings.ambient_intensity = value;
-                _intensityLabel.text = "(" + value.ToString() + ")";
+                _intensityLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.SUNINTENSITY) + "(" + value.ToString() + ")";
             }
             if (trigger == _ambientSlider)
             {
                 DayNightProperties.instance.m_Exposure = value;
                 EyeCandyXTool.currentSettings.ambient_ambient = value;
-                _ambientLabel.text = "(" + value.ToString() + ")";
+                _ambientLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.EXPOSURE) + "(" + value.ToString() + ")";
             }
 
             //if (trigger == _sizeSlider)
@@ -301,9 +301,9 @@ namespace EyeCandyX.GUI
                 if (!EyeCandyXTool.config.enableSimulationControl)
                 {
                     _todSlider.isEnabled = false;
-                    _todLabel.text = "Time of Day (disabled)";
+                    _todLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.TIME_DAY_TEXT_DISABLED);
                     //  
-                    _speedLabel.text = "Day/night cycle speed (disabled)";
+                    _speedLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DNC_SPEED_DISABLED);
                     _speedSlider.value = 0;
                     _speedSlider.isEnabled = false;
                     return;
@@ -315,7 +315,7 @@ namespace EyeCandyX.GUI
                         float tod = _todManager.TimeOfDay;
                         int hour = (int)Math.Floor(tod);
                         int minute = (int)Math.Floor((tod - hour) * 60.0f);
-                        _todLabel.text = string.Format("Time of Day (currently: {0,2:00}:{1,2:00})", hour, minute);
+                        _todLabel.text = string.Format(Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.TIME_DAY_TEXT) + "(currently: {0,2:00}:{1,2:00})", hour, minute);
                         _todSlider.isEnabled = true;
                         //  
                         if (!pauseUpdates)
@@ -326,16 +326,16 @@ namespace EyeCandyX.GUI
                         float fade = Math.Abs(_todManager.TimeOfDay - 12.0f) / 12.0f;
                         ((UISprite)_todSlider.thumbObject).color = Color32.Lerp(daytimeColor, nighttimeColor, fade);
                         //  
-                        _speedLabel.text = string.Format($"Day/night cycle speed ({_todManager.speed})");
+                        _speedLabel.text = $"{Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DAYNIGHTCYCLE_TEXT)}{_todManager.speed}";
                         _speedSlider.value = Array.IndexOf(speeds, _todManager.speed);
                         _speedSlider.isEnabled = true;
                     }
                     else
                     {
-                        _todLabel.text = "Time of Day (disabled)";
+                        _todLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.TIME_DAY_TEXT_DISABLED);
                         _todSlider.isEnabled = false;
                         //  
-                        _speedLabel.text = "Day/night cycle speed (disabled)";
+                        _speedLabel.text = Translation.Instance.GetTranslation(EyecandyX.Locale.TranslationID.DNC_SPEED_DISABLED);
                         _speedSlider.value = 0;
                         _speedSlider.isEnabled = false;
                     }
