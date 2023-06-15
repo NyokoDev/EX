@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="Wprowadź nazwę ustawień wstępnych" />
 		<Translation ID="ConfirmOverwrite" String="Potwierdź nadpisanie" />
 		<Translation ID="Cancel" String="Anuluj" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="Automatyczne wczytywanie najnowszego presetu podczas uruchamiania." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="Włącz kontrolę czasu." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="Aktywuj funkcję kontroli czasu, w tym suwak czasu dnia." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="Wybierz preferowane połączenie klawiszy do dostępu do interfejsu modułu." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="Zapisuj dane w dzienniku debugowania." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="Może wpływać na wydajność." />
 	</Translations>
 </Language>

@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="Por favor, introduce un nombre para el preajuste" />
 		<Translation ID="ConfirmOverwrite" String="Confirmar sobrescritura" />
 		<Translation ID="Cancel" String="Cancelar" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="Cargar automáticamente el preset más reciente al iniciar." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="Habilitar control de tiempo." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="Activar la funcionalidad de control de tiempo, incluyendo el deslizador de hora del día." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="Seleccionar tu combinación preferida de teclas para acceder a la interfaz del mod." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="Registrar datos en el registro de salida de depuración." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="Puede afectar el rendimiento." />
 	</Translations>
 </Language>

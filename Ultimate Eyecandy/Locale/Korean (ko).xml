@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="프리셋 이름을 입력해주세요" />
 		<Translation ID="ConfirmOverwrite" String="덮어쓰기 확인" />
 		<Translation ID="Cancel" String="취소" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="시작 시 가장 최근의 프리셋을 자동으로 불러옵니다." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="시간 제어 기능을 활성화합니다." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="시간 제어 기능을 활성화하고 낮과 밤 슬라이더를 포함합니다." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="모드 인터페이스에 액세스하기 위한 선호하는 키 조합을 선택합니다." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="디버그 출력 로그에 데이터를 기록합니다." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="성능에 영향을 줄 수 있습니다." />
 	</Translations>
 </Language>

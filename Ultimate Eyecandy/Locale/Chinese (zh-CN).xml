@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="请输入预设名称" />
 		<Translation ID="ConfirmOverwrite" String="确认覆盖" />
 		<Translation ID="Cancel" String="取消" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="启动时自动加载最近的预设。" />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="启用时间控制。" />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="激活时间控制功能，包括日夜滑块。" />
+		<Translation ID="SETTINGS_DESIREDKEY" String="选择您偏好的键盘组合以访问模组界面。" />
+		<Translation ID="SETTINGS_DEBUGDATA" String="记录调试输出日志中的数据。" />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="可能会影响性能。" />
 	</Translations>
 </Language>

@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="Bitte geben Sie einen Voreinstellungsname ein" />
 		<Translation ID="ConfirmOverwrite" String="Überschreiben bestätigen" />
 		<Translation ID="Cancel" String="Abbrechen" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="Beim Start automatisch das neueste Voreinstellungsprofil laden." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="Zeitsteuerung aktivieren." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="Aktiviert die Zeitsteuerungsfunktion, einschließlich des Tageszeitreglers." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="Wählen Sie Ihre bevorzugte Tastenkombination zum Zugriff auf die Mod-Schnittstelle." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="Daten im Debug-Ausgabeprotokoll aufzeichnen." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="Kann die Leistung beeinträchtigen." />
 	</Translations>
 </Language>

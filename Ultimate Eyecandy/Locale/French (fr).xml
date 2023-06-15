@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="Veuillez entrer un nom de préréglage" />
 		<Translation ID="ConfirmOverwrite" String="Confirmer l'écrasement" />
 		<Translation ID="Cancel" String="Annuler" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="Charger automatiquement le préréglage le plus récent au démarrage." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="Activer le contrôle du temps." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="Activer la fonctionnalité de contrôle du temps, y compris le curseur de l'heure de la journée." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="Sélectionnez votre combinaison de touches préférée pour accéder à l'interface du mod." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="Enregistrer des données dans le journal de sortie de débogage." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="Peut affecter les performances." />
 	</Translations>
 </Language>

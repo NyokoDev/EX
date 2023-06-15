@@ -51,5 +51,11 @@
         public const string PresetNameTooltip = "PresetNameTooltip";
         public const string ConfirmOverwrite = "ConfirmOverwrite";
         public const string Cancel = "Cancel";
+        public const string SETTINGS_LOADMOSTRECENT = "SETTINGS_LOADMOSTRECENT"; // Load most recent preset on start. 
+        public const string SETTINGS_ENABLESIMCONTROL = "SETTINGS_ENABLESIMCONTROL"; //enable time control
+        public const string SETTINGS_ENABLESIMCONTROL_TOOLTIP = "SETTINGS_ENABLESIMCONTROL_TOOLTIP"; // Enables functionality of time control such as time of day slider.
+        public const string SETTINGS_DESIREDKEY = "SETTINGS_DESIREDKEY"; // //Choose your desired key combination for activating the mod interface.
+        public const string SETTINGS_DEBUGDATA = "SETTINGS_DEBUGDATA"; // Write data to debug output log.
+        public const string SETTINGS_DEBUGDATA_TOOLTIP = "SETTINGS_DEBUGDATA_TOOLTIP"; // Write data to debug output log.
     }
 }

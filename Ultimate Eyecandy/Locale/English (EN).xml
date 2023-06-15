@@ -50,5 +50,11 @@
 		<Translation ID="PresetNameTooltip" String="Please enter a Preset name" />
 		<Translation ID="ConfirmOverwrite" String="Confirm Overwrite" />
 		<Translation ID="Cancel" String="Cancel" />
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="Automatically load the most recent preset upon startup." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="Enable time control." />
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="Activate time control functionality, including the time of day slider." />
+		<Translation ID="SETTINGS_DESIREDKEY" String="Select your preferred key combination for accessing the mod interface." />
+		<Translation ID="SETTINGS_DEBUGDATA" String="Record data in the debug output log." />
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="May impact performance." />
 	</Translations>
 </Language>
