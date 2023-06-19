@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2009/XMLSchema/XMLSchema.xsd" UniqueName="ja" ReadableName="Japanese">
+	<Translations>
+		<Translation ID="MOD_DESCRIPTION" String="初心者に優しいビジュアルカスタマイズツールで、都市のビジュアルを調整しましょう"/>
+		<Translation ID="MOD_NAME" String="Eyecandy X"/>
+		<Translation ID="AMBIENT_TAB" String="環境"/>
+		<Translation ID="AMBIENT_TAB_TOOLTIP" String="時間帯/緯度/経度/太陽と周囲の光の強さなど、マップ全体の設定が変更できます。"/>
+		<Translation ID="WEATHER_TAB" String="天候"/>
+		<Translation ID="WEATHER_TAB_TOOLTIP" String="雨/雪/霧の強度など、天気の設定が変更できます。"/>
+		<Translation ID="LUT_TAB" String="LUT"/>
+		<Translation ID="LUT_TAB_TOOLTIP" String="使用するLUTを素早く変更できます。"/>
+		<Translation ID="PRESETS_TAB" String="プリセット"/>
+		<Translation ID="PRESETS_TAB_TOOLTIP" String="現在の設定をプリセットに保存やロードしたり、設定をデフォルトにリセットできます。"/>
+		<Translation ID="TIME_DAY_TEXT" String="時間帯"/>
+		<Translation ID="DAYNIGHTCYCLE_TEXT" String="昼/夜のサイクル速度"/>
+		<Translation ID="LAT_TEXT" String="緯度"/>
+		<Translation ID="LOT_TEXT" String="経度"/>
+		<Translation ID="SUNINTENSITY" String="環境光の強度"/>
+		<Translation ID="EXPOSURE" String="露出量"/>
+		<Translation ID="TIME_DAY_TEXT_DISABLED" String="時間帯 (停止中)"/>
+		<Translation ID="DNC_SPEED_DISABLED" String="昼/夜のサイクル (停止中)"/>
+		<Translation ID="SELECTLUT_TEXT" String="LUTを選択"/>
+		<Translation ID="LOADLUT_TEXT" String="LUTをロード"/>
+		<Translation ID="ALREADYACTLUT_TEXT" String="リストから選択した、LUTは既に使用中です。"/>
+		<Translation ID="ENABLELUT_TEXT" String="カラーコレクション(LUT)を有効化"/>
+		<Translation ID="TM_TOOLTIP_TEXT" String="チェックするとトーンマッピングが有効化します。"/>
+		<Translation ID="ENABLE_TM_TEXT" String="トーンマッピングを有効化"/>
+		<Translation ID="ENABLE_BLOOM_TEXT" String="ブルームを有効化"/>
+		<Translation ID="RESET_BUTTON_TEXT" String="リセット"/>
+		<Translation ID="RESET_VALUES_TOOLTIP" String="全ての値をデフォルトにリセットします。"/>
+		<Translation ID="LUT_ALREADY_ACTIVE_NOTICE" String="リストから選択した、LUTは既に使用中です。"/>
+		<Translation ID="LOAD_LUT_SELECTED" String="選択したLUTをロードします。"/>
+		<Translation ID="LOADPRESET_TEXT" String="プリセットをロード"/>
+		<Translation ID="LOADPRESET_TOOLTIP" String="選択したプリセットをロードします。"/>
+		<Translation ID="DELETEPRESET_TEXT" String="プリセットを削除"/>
+		<Translation ID="DELETEPRESET_TOOLTIP" String="現在、選択中のプリセットを削除します。"/>
+		<Translation ID="SAVEPRESET_TEXT" String="新規プリセットで保存"/>
+		<Translation ID="SAVESETTINGS_TOOLTIP" String="現在の設定を新規プリセットとして保存します。"/>
+		<Translation ID="OVERWRITE" String="上書き"/>
+		<Translation ID="OVERWRITE_TOOLTIP" String="既存のプリセットを上書きします。"/>
+		<Translation ID="EXCEPTIONOVERWRITE_TEXT" String="プリセットを上書き"/>
+		<Translation ID="EXCEPTIONOVERWRITE_TEXT2" String="プリセットを上書きしますがよろしいですか？"/>
+		<Translation ID="EXCEPTIONDELETEPRESET" String="プリセットの削除"/>
+		<Translation ID="EXCEPTIONDELETEPRESET2" String="プリセットを削除しますがよろしいですか？"/>
+		<Translation ID="CreateNewPreset" String="新規プリセットの作成"/>
+		<Translation ID="PresetName" String="プリセット名"/>
+		<Translation ID="Create" String="作成"/>
+		<Translation ID="OverwritePreset" String="プリセットを上書き"/>
+		<Translation ID="PresetExists" String="注意: プリセットは既に存在するので、上書きされます！"/>
+		<Translation ID="PresetNameTooltip" String="プリセット名を入力して下さい。"/>
+		<Translation ID="ConfirmOverwrite" String="上書きの確認"/>
+		<Translation ID="Cancel" String="キャンセル"/>
+		<Translation ID="SETTINGS_LOADMOSTRECENT" String="起動時に最新のプリセットを自動的にロードします。"/>
+		<Translation ID="SETTINGS_ENABLESIMCONTROL" String="時間制御を有効化"/>
+		<Translation ID="SETTINGS_ENABLESIMCONTROL_TOOLTIP" String="時間帯スライダーを含む、時間制御の機能を有効化します。"/>
+		<Translation ID="SETTINGS_DESIREDKEY" String="MODのUIで使用する起動時のキーバインドを選択"/>
+		<Translation ID="SETTINGS_DEBUGDATA" String="デバッグ出力ログにデータを記録"/>
+		<Translation ID="SETTINGS_DEBUGDATA_TOOLTIP" String="パフォーマンスに影響する可能性があります。"/>
+	</Translations>
+</Language>
