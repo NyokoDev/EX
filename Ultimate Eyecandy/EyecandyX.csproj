@@ -87,7 +87,9 @@
     <Compile Include="Fraction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Icon.png" />
+    <EmbeddedResource Include="Assets\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Locale\Korean %28ko%29.xml" />

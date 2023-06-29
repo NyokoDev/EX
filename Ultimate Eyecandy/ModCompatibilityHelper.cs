@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using ColossalFramework.UI;
+using UnityEngine;
 
 namespace CompCheck
 {
@@ -330,7 +331,7 @@ public class CompatibilityHelper
                 messageBuilder.AppendLine("- UnifiedUI");
             }
 
-            panel.SetMessage("Installed Visual Mods", messageBuilder.ToString(), false);
+            Debug.LogError("Installed Visual Mods" + messageBuilder.ToString());
         }
     }
 }
